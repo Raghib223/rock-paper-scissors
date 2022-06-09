@@ -30,7 +30,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     else if (playerSelection === "Rock" && computerSelection === "Paper") {
-        winner = "You loser! Paper beats Rock"
+        winner = "You Loser! Paper beats Rock"
     }
 
     else if (playerSelection === "Rock" && computerSelection === "Scissors") {
@@ -56,3 +56,37 @@ function playRound(playerSelection, computerSelection) {
     return winner
 }
 
+function game() {
+    playRound(playerSelection, computerSelection)
+    let roundResult = "";
+    let playerScore = 0;
+    let computerScore = 0;
+    let playerTurn = "";
+
+    for (let i = 0; i < 5; i++) {
+        computerTurn = computerPlay();
+        playerTurn = playerSelection();
+        roundResult = playRound(playerSelection, computerSelection);
+        if (roundResult.includes("You Win")) {
+            playerScore+=1;
+
+        }
+            else if (roundResult.includes("You Loser")) {
+            computerScore+=1;
+            console.log(roundResult + "The Score is" + playerScore + "to" + computerScore)
+        }
+    }
+
+    if (playerScore > computerScore) {
+        console.log("You won the game!" + playerScore + "to" + computerScore)
+    }
+    else if (playerScore < computerScore) {
+        console.log("You lost the game" + playerScore + "to" + computerScore)
+    }
+    else {
+        console.log("It's a tie!")
+    }
+
+}
+
+game()
